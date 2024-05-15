@@ -7,8 +7,18 @@ a[href]:after {
   content: none !important;
 }
 
+.container{
+  margin-top: 0px;
+}
+
 #photo{
   display: none;
+}
+#photo-header{
+  margin-top: 0px;
+}
+#text-header {
+  margin-top: 10px;
 }
 
 .box {
@@ -23,6 +33,11 @@ blockquote,
 .skills,
 .interests {
   page-break-inside: avoid;
+}
+
+.contact-item .icon{
+  border-right: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
 }
 
 .col-sm-5{
@@ -50,10 +65,14 @@ blockquote,
   background: none;
 }
 
+#text-header:after{
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
 #awards .description,
 #education .description,
 .job .details {
-  border: 1px solid #eee;
+  border: 1px solid rgb(238, 238, 238);
 }
 .publication,
 .publication .panel-heading,
@@ -85,7 +104,7 @@ blockquote,
   height: 0;
   width: 0;
   border: solid transparent;
-  border-right-color: #999;
+  border-right-color: rgb(153, 153, 153);
   border-width: 4px;
   pointer-events: none;
- }
+}
