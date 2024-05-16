@@ -220,6 +220,33 @@ function render(resumeObject) {
         }
     }
 
+
+    if (resumeObject.certificates && resumeObject.certificates.length) {
+        if (resumeObject.certificates[0].name) {
+            resumeObject.certificatesBool = true;
+            _.each(resumeObject.certificates, function(w) {
+                if (w.startDate) {
+                    w.startDateYear = (w.startDate || "").substr(0,4);
+                    w.startDateMonth = getMonth(w.startDate || "");
+
+                }
+                if (w.endDate) {
+                    w.endDateYear = (w.endDate || "").substr(0,4);
+                    w.endDateMonth = getMonth(w.endDate || "");
+                } else {
+                    w.endDateYear = 'Present'
+                }
+                if (w.highlights) {
+                    if (w.highlights[0]) {
+                        if (w.highlights[0] != "") {
+                            w.boolHighlights = true;
+                        }
+                    }
+                }
+            });
+        }
+    }
+
     if (resumeObject.publications && resumeObject.publications.length) {
         if (resumeObject.publications[0].name) {
             resumeObject.publicationsBool = true;

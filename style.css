@@ -10,7 +10,7 @@ body{
   font-family: 'Open Sans', Arial, Tahoma;
   font-weight: 400;
   color: #363636;
-  background: #334960;
+  background: #2c3e50;
 }
 blockquote {
   font-size: 1em;
@@ -83,7 +83,8 @@ blockquote {
 }
 
 #awards,
-#education{
+#certificates,
+#education {
   margin-top: 20px;
   margin-bottom: 0;
   position: relative;
@@ -91,6 +92,7 @@ blockquote {
   list-style: none;
 }
 #awards:before,
+#certificates:before,
 #education:before {
   width: 5px;
   height: 100%;
@@ -109,6 +111,7 @@ blockquote {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 #awards li,
+#certificates li,
 #education li{
   width: 100%;
   z-index: 2;
@@ -116,6 +119,7 @@ blockquote {
   float: left;
 }
 #awards .year,
+#certificates .year,
 #education .year{
   width: 14%;
   background: #fff;
@@ -124,6 +128,7 @@ blockquote {
   display: inline-block;
 }
 #awards .description,
+#certificates .description,
 #education .description{
   width: 83%;
   display: inline-block;
@@ -135,6 +140,7 @@ blockquote {
   border-right: 1px solid #ccc;
 }
 #awards .description:after,
+#certificates .description:after,
 #education .description:after {
   content: '';
   position: absolute;
@@ -149,6 +155,7 @@ blockquote {
   pointer-events: none;
 }
 #awards .description h3,
+#certificates .description h3,
 #education .description h3{
   font-size: 1.2em;
   margin: 0;
@@ -156,6 +163,7 @@ blockquote {
   font-weight: 700;
 }
 #awards .description p,
+#certificates .description p,
 #education .description p{
   margin-top: 5px;
   padding: 0;
@@ -270,31 +278,4 @@ blockquote {
   font-size: .75em;
   position: absolute;
   margin: 1px 10px;
-}
-
-.project-keyword {
-  margin: 0;
-  padding: 0;
-}
-
-ul.project-keyword li {
-  display: inline-block;
-  /* color: #fff; */
-  margin: 0;
-  padding: 0;
-  /* background: #32475c; */
-  /* font-size: .85em; */
-}
-ul.project-keyword li::after {
-  /* padding: 0 0 0 0.1em; */
-  content: ", ";
-}
-ul.project-keyword li:last-of-type::after {
-  content: "";
-}
-
-#language-skills .skill{
-  margin: 10px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
 }
