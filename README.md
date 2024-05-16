@@ -1,84 +1,67 @@
-# jsonresume-theme-kendall
+# jsonresume-theme-kendall-saathoff
 
 A theme for the [JSONResume](https://github.com/jsonresume/resume-schema) schema, that relies on Bootstrap and FontAwesome, added with some personal flair.
 
+Pulled in the changes from https://github.com/daniel-herink/jsonresume-theme-kendall-herink/ but being that I wanted somehthing sligly different forked off the orignal.
+
+Orignal at https://github.com/LinuxBozo/jsonresume-theme-kendall/
+
 **NOTE**: This supports schema 1.0.0. Some things may be missing or broken if your resume.json is using the older schema.
 
-## Usage
+## Typical Work-Flow
 
-To first get started with this JSONResume theme, you'll need to have the JSONResume CLI installed. If you haven't already install it with `npm install -g resume-cli`. If this doesn't work, try `sudo npm install -g resume-cli`.
+### Install `resumed`
 
-After this, you can get your resume.json ready by typing `resume init`. After hitting enter, your resume will be initialized and you can edit it and fill in the neccessary fields. Check out [the official resume-schema repository](https://github.com/jsonresume/resume-schema) for more information on filling these fields.
+To first use this theme, you will need to install the [`resumed` CLI tool](https://github.com/rbardini/resumed). This is an alternative to the official [JSONResume CLI tool](https://github.com/jsonresume/resume-cli) that is a more modern implementation of the original tool. I prefer it to the JSONResume CLI tool.
 
-When you are finished with your resume, you may test it by yet again opening the command line and typing `resume serve --theme kendall` to see how it looks with this theme. You can replace the word `kendall` with other theme names too.
-
-### Install the command line
-
-We're going to use the official [resume-cli](https://github.com/jsonresume/resume-cli) to run our development server.
-
-Go ahead and install it:
+Install `resumed` and this theme with:
 
 ```
-sudo npm install -g resume-cli
+npm install resumed jsonresume-theme-kendall-saathoff
 ```
 
-### Install npm packages
+### Put Together Your JSON Resume
 
-We need to install the dependencies. `cd` into the theme folder we just downloaded and run:
-
-```bash
-sudo npm install
-```
-
-This will read the local `package.json` and install the packages listed under `dependencies`.
-
-### Serve theme
-
-While inside the theme folder, simply run:
+In order to generate an HTML page of your JSON resume, you will of course need your resume info plugged into the proper schema. Refer to the [JSONResume](https://github.com/jsonresume/resume-schema) repo for more information. You can also call (this assumes that `resumed` is installed in a local location):
 
 ```
-resume serve --theme .
+/path/to/resumed/bin/resume.js init my-resume.json
 ```
 
-You should now see this message:
+This will create a JSON resume named "my-resume.json" with a number of fields filled out with generic information. You can use this to replace those default JSON values with your own resume details.
+
+### Use Theme with `resumed` to Generate HTML
+
+The handy feature of `resumed` is that when you install it with a theme, it will always default to that theme. All that is required is to call:
 
 ```
-Preview: http://localhost:4000
-Press ctrl-c to stop
+/path/to/resumed/bin/resume.js render my-resume.json -o my-resume.html
 ```
 
-Congratulations, you've made it!
+This will take your filled-in "my-resume.json" and create the HTML form of the resume named "my-resume.html", using this theme (assuming you installed `resumed` as detailed above).
 
-__The theme development can now begin.__
+Refer to `resumed` for the full documentation on its usage.
 
-## Tips
+### Bonus: Render PDF from HTML
 
-As of now, the theme supports the following profiles in the basics.profiles array.
+After creating or updating your JSON resume and generating the HTML page from it, the next step is to get a PDF of your resume. For this last step, I use Docker (or [podman](https://github.com/containers/podman), if you're familiar with it) to use a headless Chrome browser to print the HTML page to a PDF file.
 
-* Facebook
-* Github
-* Twitter
-* Google Plus
-* YouTube
-* Vimeo
-* Linkedin
-* Pinterest
-* Flickr
-* Behance
-* Dribbble
-* CodePen
-* Soundcloud
-* Steam
-* Reddit
-* Tumblr
-* Stack Overflow
-* Bitbucket
-* Gitlab
+To generate a slick-looking PDF, with no margins, and limited to one page, I use the docker call:
 
-Every single one of these is optional, and every field in the basics.profiles array **must** be entered without spaces. This theme will try to use the matching `-square` version of the icon from FontAwesome if it doesn't already have support for one of your profiles. If you want support for more social networks, feel free to leave an issue, or even better, submit a pull request. Thanks.
+```
+docker run -v "/path/to/jsomeresume/folder:/workspace" pink33n/html-to-pdf --url http://localhost/my-resume.html --pdf my-resume.pdf --no-margins --page-ranges 1
+```
 
-If you want to keep your resume mobile-friendly, please limit the number of profiles to 10, please. No one should have over 10 profiles on their resume anyway.
+This will create a PDF version of your resume named "my-resume.pdf" in the same folder as the "my-resume.html" file. You can drop the `--page-ranges 1` in order to allow for multiple pages for your resume PDF.
 
-Every section is optional. If you do not include the publications array in your resume.json, no publications section will appear.
+Refer to the [pink33n/docker-html-to-pdf](https://github.com/pinkeen/docker-html-to-pdf) for full documentation.
 
-If you find any other problems with this theme in specified, do feel free to leave an issue. Thanks.
+## Why the Changes?
+
+First are concerns about the orignal theme not having receaved fixes in quite some time. Second because the orignal theme doesn't fit what I want, so taking matters into my own hands. See the list below for the changes I have made.
+
+- Removal of the profile picture
+- Improving the projects section
+- Changed the colors
+- Adding a certifications section
+- Removing the Language Section
