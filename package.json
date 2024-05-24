@@ -1,6 +1,6 @@
 {
   "name": "jsonresume-theme-kendall-saathoff",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A JSON Resume theme built with bootstrap",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cjthedj97/jsonresume-theme-kendall-saathoff.git"
+    "url": "git+https://github.com/cjthedj97/jsonresume-theme-kendall-saathoff.git"
   },
   "keywords": [
     "json",
